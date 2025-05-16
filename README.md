@@ -1,71 +1,82 @@
-# {Proyecto: Nombre del proyecto Hardware}
-ESTE DOCUMENTO PUEDE SER ENTREGADO EN ESPAÑOL O EN INGLES...
+# E.C.O.B.O.T. (Environmental Cleanup & Object-sorting BOT)
 
-![MIT License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)![Not Maintained](https://img.shields.io/badge/status-not_maintained-lightgrey?style=for-the-badge)
-![Maintained](https://img.shields.io/badge/status-maintained-brightgreen?style=for-the-badge)
-[![RoboDK](https://img.shields.io/badge/Uses-RoboDK-blue?style=for-the-badge&logo=robodk)](https://robodk.com/)
-[![Webots](https://img.shields.io/badge/Uses-Webots-cc3333?style=for-the-badge&logo=cyberbotics&logoColor=white)](https://cyberbotics.com/)
-![ROS](https://img.shields.io/badge/ROS-22314E?style=for-the-badge&logo=ros&logoColor=white)
-![Arduino](https://img.shields.io/badge/Arduino-00979D?style=for-the-badge&logo=arduino&logoColor=white)
-![Raspberry Pi](https://img.shields.io/badge/Raspberry%20Pi-C51A4A?style=for-the-badge&logo=raspberry-pi&logoColor=white)
-![Basys 3](https://img.shields.io/badge/Basys%203-0066A1?style=for-the-badge&logo=digilent&logoColor=white)
-![VHDL](https://img.shields.io/badge/VHDL-FFA500?style=for-the-badge&logoColor=white)
-![MATLAB](https://img.shields.io/badge/MATLAB-0076A8?style=for-the-badge&logo=mathworks&logoColor=white)
+![MIT License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)  
+![Maintained](https://img.shields.io/badge/status-maintained-brightgreen?style=for-the-badge)  
+![ROS](https://img.shields.io/badge/ROS-22314E?style=for-the-badge&logo=ros&logoColor=white)  
+![Arduino](https://img.shields.io/badge/Arduino-00979D?style=for-the-badge&logo=arduino&logoColor=white)  
+![Raspberry Pi](https://img.shields.io/badge/Raspberry%20Pi-C51A4A?style=for-the-badge&logo=raspberry-pi&logoColor=white)  
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)  
 ![C++](https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-
-
-
-
-
-
-
-Breve descripción del proyecto
 
 ---
 
-## 📋 Requisitos Previos
+## 📋 Prerequisites
 
-- Conocimientos necesarios (e.g., uso básico de herramientas, electrónica, programación)
+- Basic knowledge of:
+  - Digital electronics
+  - Programming in Python and C++ (ROS and Arduino)
+  - Computer vision fundamentals
+  - CAD and 3D printing tools
 
-- Herramientas requeridas (e.g., multímetro, cautín, impresora 3D)
+- Required tools:
+  - Multimeter
+  - Soldering iron
+  - 3D printer (FDM)
+  - Precision screwdriver set
+  - Laptop or PC with Ubuntu 20.04+
 
-- Componentes electrónicos o mecánicos necesarios (e.g., Arduino, motores, sensores)
+- Required components:
+  - Arduino Uno or Mega
+  - Raspberry Pi 4
+  - MG996R Servomotors
+  - 12V DC Motors
+  - L293D Motor Driver
+  - USB 1080p Camera
+  - 12V 5000mAh Li-Ion Battery
+  - Proximity, capacitive, and inductive sensors
+  - 3D printed mechanical structure
 
-- Software necesario (e.g., Arduino IDE, Fusion 360, PrusaSlicer)
+- Required software:
+  - Arduino IDE
+  - ROS Noetic
+  - OpenCV
+  - Python 3
+  - Fusion 360 or FreeCAD (optional)
+
+---
+
+## 📖 Introduction
+
+E.C.O.B.O.T. is an autonomous robot designed to assist in waste management in urban public spaces, particularly parks. Its purpose is to detect, collect, and classify solid waste (metals, plastics, and cardboard) using computer vision, sensors, and autonomous navigation. Inspired by the UN Sustainable Development Goal 11, it aims to support cleaner and more sustainable cities through robotic automation.
 
 ---
 
-## 📖 Introducción
+## 🔩 Materials
 
-Explicación del propósito del proyecto, para qué sirve, posibles aplicaciones y motivación para construirlo.
-
----
-
-## 🔩 Materiales
-
-Lista detallada de componentes y materiales con cantidades aproximadas:
-
-- 1x Microcontrolador (Arduino Uno, ESP32, etc.)
-
-- 2x Servo motores SG90
-
-- Cable Dupont (macho-macho y macho-hembra)
-
-- 1x Protoboard
-
-- Tornillos M3 x 12mm (x6)
-
-- Fuente de alimentación (5V)
-
-- Opcional: Caja impresa en 3D (se puede incluir STL)
+| Component                        | Quantity |
+|----------------------------------|----------|
+| Raspberry Pi 4                   | 1        |
+| Arduino Uno/Mega                 | 1        |
+| USB Camera (1080p)               | 1        |
+| 12V DC Motors                    | 4        |
+| MG996R Servomotors               | 5        |
+| L293D Motor Driver               | 1        |
+| Proximity/Capacitive/Inductive Sensors | Several  |
+| 12V 5000mAh Battery              | 1        |
+| Caterpillar chassis              | 1        |
+| Cables, connectors, protoboard   | Various  |
+| 3D-Printed Structural Parts      | Several  |
 
 ---
-## 💾 Instalación de Software
 
-Instrucciones para instalar el software necesario (IDE, drivers, librerías):
+## 💾 Software Installation
 
----
+1. Install ROS Noetic on Ubuntu 20.04  
+2. Clone this repository and compile using `catkin_make`  
+3. Install dependencies:
+   ```bash
+   sudo apt-get install ros-noetic-usb-cam ros-noetic-cv-bridge python3-opencv
+   pip install numpy imutils
 
 ## ⚙️ Montaje y Ensamblado
 
