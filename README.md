@@ -92,7 +92,11 @@ E.C.O.B.O.T. is an autonomous robot designed to assist in waste management in ur
 Pasos detallados para ensamblar el dispositivo, incluir diagramas y fotos del proceso
 **Step 1:** Assemble the chassis with motors and treads
 
+![Alt Text](media/chasisarmed.jpg)
+
 **Step 2:** Mount the sensor base and robotic arm
+
+![Alt Text](media/carcasa.jpg)
 
 **Step 3:** Install electronics into the upper compartment
 
