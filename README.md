@@ -140,7 +140,7 @@ As stated in the MIT License, this software/hardware is provided without any war
 - Fusion 360 Personal Use
 ---
 
-## 👥 Autores del proyecto
+## 👥 Autors
 
 - Valerie Sahari Sánchez Rodríguez - Project Management
 - Fernando Andrés López Hernández - Software 
