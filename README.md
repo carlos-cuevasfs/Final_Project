@@ -118,10 +118,77 @@ Pasos detallados para ensamblar el dispositivo, incluir diagramas y fotos del pr
 
 ---
 
-## 💻 Programación
+## ## 💻 Programming
 
-Código de ejemplo con explicación de cada parte relevante:
+Below is an example of the Python node used to control the robot's gripper. It listens for a command from the finite state machine (FSM), sends an activation signal to the Arduino, and waits for the gripper action to complete.
 
+### gripper_node.py
+
+```python
+import rclpy                             # ROS 2 client library for Python
+from rclpy.node import Node              # Base class for creating ROS 2 nodes
+from std_msgs.msg import String          # Standard message type used for communication
+import time                              # Time module for delay
+
+# Define a class that extends Node to implement a ROS 2 node
+class GripperNode(Node):
+    def __init__(self):
+        super().__init__('gripper_node')  # Initialize the node with the name 'gripper_node'
+
+        self.estado_activo = False        # Flag to prevent repeated activations
+
+        # Subscription to listen for activation command from FSM node
+        self.subscription = self.create_subscription(
+            String,                       # Message type
+            'orden_gripper',             # Topic name
+            self.callback_orden,         # Callback function
+            10                           # Queue size
+        )
+
+        # Publisher to send serial commands to Arduino
+        self.cmd_pub = self.create_publisher(String, 'comando_serial', 10)
+
+        # Inform in logs that the node is ready and waiting
+        self.get_logger().info("🛑 Gripper node waiting for FSM activation...")
+
+    # Callback function triggered when a message is received on 'orden_gripper'
+    def callback_orden(self, msg):
+        # Check if the received message is the activation command and node is not already active
+        if msg.data == 'activar gripper_node' and not self.estado_activo:
+            self.estado_activo = True
+            self.get_logger().info("🤖 Arm activated: Grabbing can...")
+
+            # Create and send a command message to Arduino to activate the gripper
+            comando = String()
+            comando.data = "Brazo"       # The string interpreted by Arduino to move the arm
+            self.cmd_pub.publish(comando)
+
+            self.get_logger().info("📤 'Brazo' command sent to Arduino.")
+
+            # Wait 20 seconds to allow physical action to complete (e.g., gripping)
+            time.sleep(20)
+
+            self.get_logger().info("✅ Action complete. Gripper node ready for next activation.")
+            self.estado_activo = False   # Reset the flag to allow future activations
+
+# Main function to start the node
+def main(args=None):
+    rclpy.init(args=args)                # Initialize ROS 2 Python client
+    node = GripperNode()                 # Create an instance of the GripperNode
+    rclpy.spin(node)                     # Keep the node running and listening for messages
+    node.destroy_node()                  # Clean up on shutdown
+    rclpy.shutdown()                     # Shutdown ROS 2 Python client
+
+# Entry point of the script
+if __name__ == '__main__':
+    main()
+```
+
+This node subscribes to the topic orden_gripper, waiting for the message "activar gripper_node".
+
+Once activated, it publishes the "Brazo" command to the comando_serial topic to trigger the Arduino-controlled gripper.
+
+The node then waits 20 seconds to allow the mechanical action to complete before resetting.
 ---
 
 ## ✅ Conclusion
