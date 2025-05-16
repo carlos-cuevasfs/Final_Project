@@ -101,6 +101,7 @@ Pasos detallados para ensamblar el dispositivo, incluir diagramas y fotos del pr
 **Step 3:** Install electronics into the upper compartment
 
 **Step 4:** Connect power and verify wiring
+![Alt Text](media/final.jpg)
 
 ## 🔌 Electrical Connections Table
 
