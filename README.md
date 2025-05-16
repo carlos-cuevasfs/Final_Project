@@ -78,19 +78,34 @@ E.C.O.B.O.T. is an autonomous robot designed to assist in waste management in ur
    sudo apt-get install ros-noetic-usb-cam ros-noetic-cv-bridge python3-opencv
    pip install numpy imutils
 
-## ⚙️ Montaje y Ensamblado
+## ⚙️ Assembly Instructions
 
 Pasos detallados para ensamblar el dispositivo, incluir diagramas y fotos del proceso
+**Step 1:** Assemble the chassis with motors and treads
 
-**Paso 1:** Ensamblar la base
+**Step 2:** Mount the sensor base and robotic arm
 
-**Paso 2:** Conectar los motores al microcontrolador
+**Step 3:** Install electronics into the upper compartment
 
-**Paso 3:** Asegurar los componentes en la carcasa
+**Step 4:** Connect power and verify wiring
 
-### 🔌 Conexiones Eléctricas
+## 🔌 Electrical Connections Table
 
-Diagrama esquemático y tabla de conexiones entre componentes:
+| Component                  | Pin Type         | Connected To                 | Notes                                      |
+|---------------------------|------------------|------------------------------|--------------------------------------------|
+| DC Motor (x4)             | Motor terminals  | L293D OUT1–OUT4              | Dual H-bridge motor control                |
+| L293D Motor Driver        | IN1–IN4           | Arduino Digital Pins 4–7     | PWM and direction control                  |
+| L293D ENA/ENB             | PWM pins          | Arduino PWM Pins 5 & 6       | Speed control via analogWrite()           |
+| MG996R Servo (Arm)        | Signal            | Arduino PWM Pins 9, 10, 11   | One pin per DOF                            |
+| Servo (Camera Mount)      | Signal            | Arduino PWM Pins 12, 13      | For camera panning/tilt                    |
+| Inductive Sensor          | Digital Output    | Arduino Digital Pin 2        | Detects metal                              |
+| Capacitive Sensor         | Digital Output    | Arduino Digital Pin 3        | Detects non-metal objects                  |
+| Proximity Sensor (x2)     | Digital Output    | Arduino Digital Pins A0, A1  | Used for obstacle avoidance                |
+| USB Webcam                | USB               | Raspberry Pi USB Port        | Computer vision via OpenCV                 |
+| Raspberry Pi              | Serial (TX/RX)    | Arduino Serial (via USB)     | ROS communication (rosserial)             |
+| Power Supply (12V)        | VIN/GND           | L293D, Servo Power Rail      | Use regulator for 5V components if needed  |
+| Arduino (Logic Power)     | USB or 5V         | Raspberry Pi or external reg | 5V logic level only                        |
+
 
 ---
 
@@ -100,36 +115,46 @@ Código de ejemplo con explicación de cada parte relevante:
 
 ---
 
-## ✅ Conclusión
+## ✅ Conclusion
 
-Resumen de lo que se logró construir, aprendizajes obtenidos y posibles mejoras o versiones futuras del proyecto.
+E.C.O.B.O.T. successfully functions as a low-cost robotic platform for autonomous waste collection and sorting. This project integrates computer vision, ROS, and mechanical design into a practical and educational solution. It was validated in controlled environments, highlighting key performance strengths and areas for improvement in future iterations.
 
 ---
 
-## 🔜 Mejoras futuras
+## 🔜 Future Improvements
 
-- Enlistar las mejoras a realizar
+- Implement dynamic obstacle detection
+- Improve classification model accuracy
+- Add solar charging for extended runtime
+- Include user feedback interface (LED/sound)
+- Optimize system energy efficiency
 
-## ⚠️ Advertencia
-
-Como se indica en la licencia MIT, este software/hardware se proporciona **sin ningún tipo de garantía**. Por lo tanto, ningún colaborador es responsable de **cualquier daño a tus componentes, materiales, PC, etc..**.
+## ⚠️ Disclaimer
+As stated in the MIT License, this software/hardware is provided without any warranty. Therefore, contributors are not responsible for any damage to your components, materials, computer, etc.
 
 ---
 
 ## 📚 Recursos Adicionales
-
+- ROS Wiki
+- OpenCV Documentation
+- Fusion 360 Personal Use
 ---
 
 ## 👥 Autores del proyecto
 
-Autores originales del proyecto
+- Valerie Sahari Sánchez Rodríguez - Project Management
+- Fernando Andrés López Hernández - Software 
+- Carlos Humberto Cuevas Flores - Design 
+- Leonardo Carrera Ángeles - Assembly
 
 ---
 
-## 📬 Contacto
+## 📬 Contact
+Questions or suggestions?
 
-¿Tienes dudas o sugerencias?
-
-- 📧 Correo electrónico: ejemplo@udlap.mx
+- 📧 Email: valerie.sanchezrz@udlap.mx
+- 📧 Email: fernando.lopezhz@udlap.mx
+- 📧 Email: carlos.cuevasfs@udlap.mx
+- 📧 Email: leonardo.carreraas@udlap.mx
 
 ---
